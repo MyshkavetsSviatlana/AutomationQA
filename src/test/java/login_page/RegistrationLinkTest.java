@@ -26,7 +26,7 @@ public class RegistrationLinkTest {
     }
 
     @Test
-    public static void checkRedirection() {
+    public static void redirectionTest() {
         WebElement registrationLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@ class=\"mt-3 block cursor-pointer hover:underline\"]")));
         registrationLink.click();
         WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@ type=\"submit\"]")));

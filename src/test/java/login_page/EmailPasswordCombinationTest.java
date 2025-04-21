@@ -26,7 +26,7 @@ public class EmailPasswordCombinationTest {
     }
 
     @Test
-    public static void alertUnregisteredUser() {
+    public static void alertUnregisteredUserTest() {
         driver.navigate().refresh();
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         email.sendKeys("doe.john@gmail.com");
@@ -39,7 +39,7 @@ public class EmailPasswordCombinationTest {
     }
 
     @Test
-    public static void alertInvalidPassword() {
+    public static void alertInvalidPasswordTest() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         email.sendKeys("john.doe@gmail.com");
         WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));

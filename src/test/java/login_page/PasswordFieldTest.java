@@ -26,7 +26,7 @@ public class PasswordFieldTest {
     }
 
     @Test
-    public static void checkAlertFewChars() {
+    public static void alertFewCharsTest() {
         driver.navigate().refresh();
         WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
         password.sendKeys("Qwerty1");
@@ -36,7 +36,7 @@ public class PasswordFieldTest {
     }
 
     @Test
-    public static void checkAlertExcessiveChars() {
+    public static void alertExcessiveCharsTest() {
         driver.navigate().refresh();
         WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
         password.sendKeys("Qwerty123456789101112");
