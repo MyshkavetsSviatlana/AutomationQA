@@ -26,7 +26,7 @@ public class SignInButtonTest {
     }
 
     @Test
-    public static void submitForm() {
+    public static void submitFormTest() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         email.sendKeys("john.doe@gmail.com");
         WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));

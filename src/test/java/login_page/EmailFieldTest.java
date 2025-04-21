@@ -26,13 +26,13 @@ public class EmailFieldTest {
     }
 
     @Test
-    public static void checkEmailPlaceholder() {
+    public static void emailPlaceholderTest() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         Assert.assertEquals("Enter email", email.getDomAttribute("placeholder"));
     }
 
     @Test
-    public static void checkAlertEmptyField() {
+    public static void alertEmptyFieldTest() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         email.submit();
         WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Required')]")));
