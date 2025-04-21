@@ -14,7 +14,7 @@ import utils.Urls;
 
 import java.time.Duration;
 
-public class RegistrationLink {
+public class RegistrationLinkTest {
     static WebDriver driver;
     static WebDriverWait wait;
 
