@@ -14,7 +14,7 @@ import utils.Urls;
 
 import java.time.Duration;
 
-public class EmailPasswordCombination {
+public class EmailPasswordCombinationTest {
     static WebDriver driver;
     static WebDriverWait wait;
 

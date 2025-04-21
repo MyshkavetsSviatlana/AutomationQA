@@ -1,11 +1,11 @@
 package login_page;
 
+import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import utils.Urls;
 
 import java.time.Duration;
 
-public class SignInButton {
+public class PasswordFieldTest {
     static WebDriver driver;
     static WebDriverWait wait;
 
@@ -26,15 +26,23 @@ public class SignInButton {
     }
 
     @Test
-    public static void submitForm() {
-        WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        email.sendKeys("john.doe@gmail.com");
+    public static void checkAlertFewChars() {
+        driver.navigate().refresh();
         WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
-        password.sendKeys("Qwerty123");
-        WebElement signInButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type=\"submit\"]")));
-        signInButton.click();
-        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[type=file]")));
-        Assert.assertEquals(driver.getCurrentUrl(), "https://qa-course-01.andersenlab.com/");
+        password.sendKeys("Qwerty1");
+        password.submit();
+        WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Min')]")));
+        Assert.assertEquals("Minimum 8 characters", alert.getText());
+    }
+
+    @Test
+    public static void checkAlertExcessiveChars() {
+        driver.navigate().refresh();
+        WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+        password.sendKeys("Qwerty123456789101112");
+        password.submit();
+        WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Max')]")));
+        Assert.assertEquals("Maximum 20 characters", alert.getText());
     }
 
     @AfterClass

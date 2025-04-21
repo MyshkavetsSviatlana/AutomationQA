@@ -1,11 +1,11 @@
 package login_page;
 
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import utils.Urls;
 
 import java.time.Duration;
 
-public class EmailField {
+public class SignInButtonTest {
     static WebDriver driver;
     static WebDriverWait wait;
 
@@ -26,17 +26,15 @@ public class EmailField {
     }
 
     @Test
-    public static void checkEmailPlaceholder() {
+    public static void submitForm() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        Assert.assertEquals("Enter email", email.getDomAttribute("placeholder"));
-    }
-
-    @Test
-    public static void checkAlertEmptyField() {
-        WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        email.submit();
-        WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Required')]")));
-        Assert.assertEquals("Required", alert.getText());
+        email.sendKeys("john.doe@gmail.com");
+        WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+        password.sendKeys("Qwerty123");
+        WebElement signInButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type=\"submit\"]")));
+        signInButton.click();
+        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[type=file]")));
+        Assert.assertEquals(driver.getCurrentUrl(), "https://qa-course-01.andersenlab.com/");
     }
 
     @AfterClass
