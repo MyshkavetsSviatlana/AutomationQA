@@ -1,20 +1,20 @@
-package login_page;
+package hw15.login_page;
 
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Driver;
-import utils.Urls;
+import hw15.utils.Urls;
 
 import java.time.Duration;
 
-public class EmailFieldTest {
+public class RegistrationLinkTest {
     static WebDriver driver;
     static WebDriverWait wait;
 
@@ -26,17 +26,11 @@ public class EmailFieldTest {
     }
 
     @Test
-    public static void emailPlaceholderTest() {
-        WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        Assert.assertEquals("Enter email", email.getDomAttribute("placeholder"));
-    }
-
-    @Test
-    public static void alertEmptyFieldTest() {
-        WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        email.submit();
-        WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Required')]")));
-        Assert.assertEquals("Required", alert.getText());
+    public static void redirectionTest() {
+        WebElement registrationLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@ class=\"mt-3 block cursor-pointer hover:underline\"]")));
+        registrationLink.click();
+        WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@ type=\"submit\"]")));
+        Assert.assertEquals(driver.getCurrentUrl(), Urls.REGISTRATION_PAGE.url);
     }
 
     @AfterClass
