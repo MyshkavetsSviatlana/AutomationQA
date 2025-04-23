@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <test name="First group methods">
+        <groups>
+            <run>
+                <include name="first"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="hw16.grouping.Groups"/>
+        </classes>
+    </test>
+    <test name="Second group methods">
+        <groups>
+            <run>
+                <include name="second"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="hw16.grouping.Groups"/>
+        </classes>
+    </test>
+</suite>
