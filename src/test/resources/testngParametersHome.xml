@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <test name="LoginParametersTest1">
+        <parameter name="email" value="mail1@mail.mail"/>
+        <parameter name="password" value="TestTest1"/>
+        <classes>
+            <class name="hw16.parameters.LoginParametersTest"/>
+        </classes>
+    </test>
+    <test name="LoginParametersTest2">
+        <parameter name="email" value="mail2@mail.mail"/>
+        <parameter name="password" value="TestTest2"/>
+        <classes>
+            <class name="hw16.parameters.LoginParametersTest"/>
+        </classes>
+    </test>
+    <test name="LoginParametersTest3">
+        <parameter name="email" value="mail3@mail.mail"/>
+        <parameter name="password" value="TestTest3"/>
+        <classes>
+            <class name="hw16.parameters.LoginParametersTest"/>
+        </classes>
+    </test>
+</suite>
