@@ -1,4 +1,4 @@
-package utils;
+package hw15.utils;
 
 public enum Urls {
     LOGIN_PAGE("https://qa-course-01.andersenlab.com/login"),

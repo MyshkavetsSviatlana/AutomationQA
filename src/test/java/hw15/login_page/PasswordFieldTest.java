@@ -1,4 +1,4 @@
-package login_page;
+package hw15.login_page;
 
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -10,7 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Driver;
-import utils.Urls;
+import hw15.utils.Urls;
 
 import java.time.Duration;
 
