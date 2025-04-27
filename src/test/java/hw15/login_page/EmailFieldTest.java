@@ -1,6 +1,5 @@
 package hw15.login_page;
 
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +12,8 @@ import utils.Driver;
 import hw15.utils.Urls;
 
 import java.time.Duration;
+
+import static org.testng.Assert.assertEquals;
 
 public class EmailFieldTest {
     static WebDriver driver;
@@ -28,7 +29,7 @@ public class EmailFieldTest {
     @Test
     public static void emailPlaceholderTest() {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-        Assert.assertEquals("Enter email", email.getDomAttribute("placeholder"));
+        assertEquals(email.getDomAttribute("placeholder"), "Enter email");
     }
 
     @Test
@@ -36,7 +37,7 @@ public class EmailFieldTest {
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
         email.submit();
         WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Required')]")));
-        Assert.assertEquals("Required", alert.getText());
+        assertEquals(alert.getText(), "Required");
     }
 
     @AfterClass

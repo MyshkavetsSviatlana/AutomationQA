@@ -1,6 +1,5 @@
 package hw15.login_page;
 
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
+
 import utils.Driver;
 import hw15.utils.Urls;
 
@@ -32,7 +33,7 @@ public class PasswordFieldTest {
         password.sendKeys("Qwerty1");
         password.submit();
         WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Min')]")));
-        Assert.assertEquals("Minimum 8 characters", alert.getText());
+        assertEquals(alert.getText(), "Minimum 8 characters");
     }
 
     @Test
@@ -42,7 +43,7 @@ public class PasswordFieldTest {
         password.sendKeys("Qwerty123456789101112");
         password.submit();
         WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Max')]")));
-        Assert.assertEquals("Maximum 20 characters", alert.getText());
+        assertEquals(alert.getText(), "Maximum 20 characters");
     }
 
     @AfterClass

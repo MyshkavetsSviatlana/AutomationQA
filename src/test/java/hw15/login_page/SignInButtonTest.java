@@ -34,7 +34,7 @@ public class SignInButtonTest {
         WebElement signInButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type=\"submit\"]")));
         signInButton.click();
         WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[type=file]")));
-        Assert.assertEquals(driver.getCurrentUrl(), "https://qa-course-01.andersenlab.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), Urls.ACCOUNT_PAGE.getLink());
     }
 
     @AfterClass

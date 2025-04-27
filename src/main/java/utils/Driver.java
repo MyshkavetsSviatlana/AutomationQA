@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class Driver {
     private static WebDriver driver;
 
+    //If you have a Driver class and initialize the driver for Chrome in this class,
+    // then it's better to either call ChromeDriver directly or make the Driver class more flexible.
     public static WebDriver setUpDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
