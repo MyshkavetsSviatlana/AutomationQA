@@ -19,6 +19,7 @@ the "OK" button, the Result message contains the entered word.
  */
 
 import hw17.course_selection.AccountPage;
+import hw17.course_selection.Credentials;
 import hw17.course_selection.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -37,7 +38,7 @@ public class ActionsTest {
         driver = Driver.setUpDriver();
         loginPage = new LoginPage(driver);
         loginPage.openLoginPage()
-                .login("john.doe@gmail.com", "Qwerty123");
+                .login(Credentials.REGISTERED_USER_LOGIN.getCredential(), Credentials.REGISTERED_USER_PASSWORD.getCredential());
         accountPage = new AccountPage(driver);
         accountPage.moveToPracticeButton()
                 .chooseActionsAlertsIFramesOption();

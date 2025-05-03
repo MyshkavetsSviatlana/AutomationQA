@@ -38,7 +38,7 @@ public class CourseSelectionTest {
         driver = Driver.setUpDriver();
         loginPage = new LoginPage(driver);
         loginPage.openLoginPage()
-                .login("john.doe@gmail.com", "Qwerty123");
+                .login(Credentials.REGISTERED_USER_LOGIN.getCredential(), Credentials.REGISTERED_USER_PASSWORD.getCredential());
         accountPage = new AccountPage(driver);
         accountPage.moveToPracticeButton()
                 .chooseSelectOption();
