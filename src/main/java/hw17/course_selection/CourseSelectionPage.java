@@ -17,7 +17,7 @@ public class CourseSelectionPage {
 
     public CourseSelectionPage(WebDriver driver) {
         CourseSelectionPage.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         PageFactory.initElements(driver, this);
     }
 

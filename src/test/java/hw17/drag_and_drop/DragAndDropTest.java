@@ -26,7 +26,7 @@ public class DragAndDropTest {
         driver = Driver.setUpDriver();
         loginPage = new LoginPage(driver);
         loginPage.openLoginPage()
-                .login(Credentials.REGISTERED_USER_LOGIN.getCredential(), Credentials.REGISTERED_USER_LOGIN.getCredential());
+                .login(Credentials.REGISTERED_USER_LOGIN.getCredential(), Credentials.REGISTERED_USER_PASSWORD.getCredential());
         accountPage = new AccountPage(driver);
         accountPage.moveToPracticeButton()
                 .chooseDragAndDropOption();
