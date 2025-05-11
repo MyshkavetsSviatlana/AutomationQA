@@ -13,13 +13,13 @@ import org.testng.annotations.*;
 import utils.DriverWithBrowserOptions;
 
 public class RegistrationAllureTest {
-    private static WebDriver driver;
+    private WebDriver driver;
     private static RegistrationPage registrationPage;
     private static final Logger LOGGER = LogManager.getLogger();
 
     @BeforeClass
     @Parameters({"browser"})
-    public static void varInit(String browser) {
+    public void varInit(String browser) {
         driver = DriverWithBrowserOptions.setUpDriver(browser);
         driver.get(Urls.REGISTRATION_PAGE.getLink());
         registrationPage = new RegistrationPage(driver);
@@ -69,7 +69,7 @@ public class RegistrationAllureTest {
     }
 
     @AfterClass
-    public static void closeDriver() {
+    public void closeDriver() {
         driver.quit();
     }
 }

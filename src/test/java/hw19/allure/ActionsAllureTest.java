@@ -19,7 +19,7 @@ import utils.DriverWithBrowserOptions;
 import static hw19.allure.LoginAllureTest.takeScreenshot;
 
 public class ActionsAllureTest {
-    private static WebDriver driver;
+    private WebDriver driver;
     private static LoginPage loginPage;
     private static AccountPage accountPage;
     private static ActionsPage actionsPage;
@@ -86,7 +86,7 @@ public class ActionsAllureTest {
     }
 
     @AfterClass
-    public static void closeDriver() {
-        driver.quit();
+    public void closeDriver() {
+        this.driver.quit();
     }
 }

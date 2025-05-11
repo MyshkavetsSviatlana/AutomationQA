@@ -12,35 +12,35 @@ import java.time.Duration;
 import java.util.List;
 
 public class CourseSelectionPage {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     public CourseSelectionPage(WebDriver driver) {
-        CourseSelectionPage.driver = driver;
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//*[@title = \"Select country\"]")
-    private static WebElement selectCountry;
+    private WebElement selectCountry;
 
     @FindBy(xpath = "//*[@title = \"Select language\"]")
-    private static WebElement selectLanguage;
+    private WebElement selectLanguage;
 
     @FindBy(xpath = "//*[@title = \"Select type\"]")
-    private static WebElement selectType;
+    private WebElement selectType;
 
     @FindBy(xpath = "//*[@title=\"Start date\"]")
-    private static WebElement calendarFrom;
+    private WebElement calendarFrom;
 
     @FindBy(xpath = "//*[@title=\"End date\"]")
-    private static WebElement calendarTo;
+    private WebElement calendarTo;
 
     @FindBy(id = "MultipleSelect")
-    private static WebElement selectCourse;
+    private WebElement selectCourse;
 
     @FindBy(xpath = "//*[@type= \"submit\"]")
-    private static WebElement submitButton;
+    private WebElement submitButton;
 
     public int getIndex(Select select, String value) {
         List<WebElement> listOfOptions = select.getOptions();

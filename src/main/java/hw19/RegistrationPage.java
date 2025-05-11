@@ -12,31 +12,31 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class RegistrationPage {
-    static WebDriver driver;
-    static WebDriverWait wait;
-    static Actions actions;
+    WebDriver driver;
+    WebDriverWait wait;
+    Actions actions;
 
     public RegistrationPage(WebDriver driver) {
-        RegistrationPage.driver = driver;
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(name = "firstName")
-    private static WebElement firstNameField;
+    private WebElement firstNameField;
     @FindBy(name = "lastName")
-    private static WebElement lastNameField;
+    private WebElement lastNameField;
     @FindBy(name = "dateOfBirth")
-    private static WebElement dateOfBirthField;
+    private WebElement dateOfBirthField;
     @FindBy(name = "email")
-    private static WebElement emailField;
+    private WebElement emailField;
     @FindBy(name = "password")
-    private static WebElement passwordField;
+    private WebElement passwordField;
     @FindBy(name = "passwordConfirmation")
-    private static WebElement passwordConfirmationField;
+    private WebElement passwordConfirmationField;
     @FindBy(xpath = "//*[@type=\"submit\"]")
-    private static WebElement submitButton;
+    private WebElement submitButton;
 
     public RegistrationPage openRegistrationPage() {
         driver.get(Urls.REGISTRATION_PAGE.getLink());

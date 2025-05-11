@@ -21,7 +21,7 @@ import java.time.temporal.TemporalAdjusters;
 import static hw19.allure.LoginAllureTest.takeScreenshot;
 
 public class CourseSelectionAllureTest {
-    private static WebDriver driver;
+    private WebDriver driver;
     private static CourseSelectionPage courseSelectionPage;
     private static AccountPage accountPage;
     private static SearchResultPage searchResultPage;
@@ -84,7 +84,7 @@ public class CourseSelectionAllureTest {
     }
 
     @AfterClass
-    public static void closeDriver() {
+    public void closeDriver() {
         driver.quit();
     }
 }

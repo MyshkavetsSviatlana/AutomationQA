@@ -20,7 +20,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class LoginAllureTest {
-    private static WebDriver driver;
+    private WebDriver driver;
     private static LoginPage loginPage;
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -70,8 +70,8 @@ public class LoginAllureTest {
     @Test(priority = 2)
     public static void emailPlaceholderTest() {
         LOGGER.info("Checking the email field placeholder...");
-        LOGGER.info("Email field placeholder '{}' detected.", LoginPage.getEmailField().getDomAttribute("placeholder"));
-        Assert.assertEquals(LoginPage.getEmailField().getDomAttribute("placeholder"), "Enter email");
+        LOGGER.info("Email field placeholder '{}' detected.", loginPage.getEmailField().getDomAttribute("placeholder"));
+        Assert.assertEquals(loginPage.getEmailField().getDomAttribute("placeholder"), "Enter email");
     }
 
     @Description("Empty email field alert check")
@@ -132,11 +132,11 @@ public class LoginAllureTest {
     @Severity(SeverityLevel.NORMAL)
     @Story("2.1")
     @Test(priority = 9)
-    public static void passwordPlaceholderTest() {
+    public void passwordPlaceholderTest() {
         driver.navigate().refresh();
         LOGGER.info("Checking the password field placeholder...");
-        LOGGER.info("Password field placeholder '{}' detected.", LoginPage.getPasswordField().getDomAttribute("placeholder"));
-        Assert.assertEquals(LoginPage.getPasswordField().getDomAttribute("placeholder"), "Enter password");
+        LOGGER.info("Password field placeholder '{}' detected.", loginPage.getPasswordField().getDomAttribute("placeholder"));
+        Assert.assertEquals(loginPage.getPasswordField().getDomAttribute("placeholder"), "Enter password");
     }
 
     @Description("Registration link check")
@@ -151,7 +151,7 @@ public class LoginAllureTest {
     }
 
     @AfterClass
-    public static void closeDriver() {
+    public void closeDriver() {
         driver.quit();
     }
 }
