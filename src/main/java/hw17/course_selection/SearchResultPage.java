@@ -10,20 +10,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class SearchResultPage {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
 
     public SearchResultPage(WebDriver driver) {
-        SearchResultPage.driver = driver;
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//h2[contains(text(), 'Unfortunately')]")
-    private static WebElement searchResult;
+    private WebElement searchResult;
 
     @FindBy(xpath = "//span[contains(text(), 'Back')]")
-    private static WebElement backArrow;
+    private WebElement backArrow;
 
     public String getSearchResult() {
         wait.until(ExpectedConditions.elementToBeClickable(backArrow));

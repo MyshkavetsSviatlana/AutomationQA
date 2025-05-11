@@ -19,7 +19,7 @@ import utils.DriverWithBrowserOptions;
 import static hw19.allure.LoginAllureTest.takeScreenshot;
 
 public class DragAndDropAllureTest {
-    private static WebDriver driver;
+    private WebDriver driver;
     private static AccountPage accountPage;
     private static LoginPage loginPage;
     private static DragAndDropPage dragAndDropPage;
@@ -59,7 +59,7 @@ public class DragAndDropAllureTest {
     }
 
     @AfterClass
-    public static void closeDriver() {
+    public void closeDriver() {
         driver.quit();
     }
 }

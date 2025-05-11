@@ -12,30 +12,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ActionsPage {
-    private static WebDriver driver;
-    private static WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
     private static Actions actions;
 
     public ActionsPage(WebDriver driver) {
-        ActionsPage.driver = driver;
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
     @FindBy(id = "AlertButton")
-    private static WebElement confirmButton;
+    private WebElement confirmButton;
 
     @FindBy(xpath = "//button[contains(text(), 'Get Discount')]")
-    private static WebElement getDiscountButton;
+    private WebElement getDiscountButton;
 
     @FindBy(xpath = "//button[contains(text(), 'Cancel course')]")
-    private static WebElement cancelCourseButton;
+    private WebElement cancelCourseButton;
 
     @FindBy(xpath = "//iframe[@title=\"Finish your registration\"]")
-    private static WebElement iframe;
+    private WebElement iframe;
 
     @FindBy(xpath = "//div[@class=\"flex p-6 bg-[#FAFAFA] text-[#000000]\"]")
-    private static WebElement resultMessage;
+    private WebElement resultMessage;
 
 
     public ActionsPage clickConfirmButton() {

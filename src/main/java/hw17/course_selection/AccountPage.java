@@ -11,21 +11,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AccountPage {
-    private static WebDriver driver;
-    private static WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
     private static Actions actions;
 
     @FindBy(xpath = "//div[contains(text(), 'AQA Practice')]")
-    private static WebElement practice;
+    private WebElement practice;
     @FindBy(xpath = "//div[contains(text(), 'Select')]")
-    private static WebElement select;
+    private WebElement select;
     @FindBy(xpath = "//div[contains(text(), 'Drag & Drop')]")
-    private static WebElement dragAndDrop;
+    private WebElement dragAndDrop;
     @FindBy(xpath = "//div[contains(text(), 'Alerts')]")
-    private static WebElement actionsAlertsIFrames;
+    private WebElement actionsAlertsIFrames;
 
     public AccountPage(WebDriver driver) {
-        AccountPage.driver = driver;
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
