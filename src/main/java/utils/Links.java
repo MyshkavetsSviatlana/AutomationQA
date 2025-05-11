@@ -17,6 +17,8 @@ public enum Links {
         return link;
     }
 
+    // You can remove the method getSize from your enum classes and use, for example:
+    //int numberOfLinks = Links.values().length;
     public static int getSize() {
         int size = 0;
         for (Links link : Links.values()) {

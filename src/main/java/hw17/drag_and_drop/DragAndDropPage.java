@@ -22,29 +22,29 @@ public class DragAndDropPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[contains(text(), 'Write test cases')]")
+    @FindBy(id = "manual1")
     private static WebElement writeTestCases;
 
-    @FindBy(xpath = "//span[contains(text(), 'Testing requirements')]")
+    @FindBy(id = "manual2")
     private static WebElement testingRequirements;
 
-    @FindBy(xpath = "//span[contains(text(), 'Write automation scripts')]")
+    @FindBy(id = "auto1")
     private static WebElement writeAutomationScripts;
 
-    @FindBy(xpath = "//span[contains(text(), 'Framework set up')]")
+    @FindBy(id = "auto2")
     private static WebElement frameworkSetUp;
 
     @FindBy(id = "target-manual1")
-    private static WebElement targetManual1;
+    private static WebElement leftTargetManual;
 
     @FindBy(id = "target-manual2")
-    private static WebElement targetManual2;
+    private static WebElement rightTargetManual;
 
     @FindBy(id = "target-auto1")
-    private static WebElement targetAuto1;
+    private static WebElement leftTargetAuto;
 
     @FindBy(id = "target-auto2")
-    private static WebElement targetAuto2;
+    private static WebElement rightTargetAuto;
 
     @FindBy(id = "DragNDropPageFinishButton")
     private static WebElement dragNDropPageFinishButton;
@@ -54,25 +54,25 @@ public class DragAndDropPage {
 
     public DragAndDropPage dragWriteTestCases() {
         wait.until(ExpectedConditions.visibilityOf(writeTestCases)).click();
-        actions.dragAndDrop(writeTestCases, targetManual1).perform();
+        actions.dragAndDrop(writeTestCases, leftTargetManual).perform();
         return this;
     }
 
     public DragAndDropPage dragTestingRequirements() {
         wait.until(ExpectedConditions.visibilityOf(testingRequirements)).click();
-        actions.dragAndDrop(testingRequirements, targetManual2).perform();
+        actions.dragAndDrop(testingRequirements, rightTargetManual).perform();
         return this;
     }
 
     public DragAndDropPage dragWriteAutomationScripts() {
         wait.until(ExpectedConditions.visibilityOf(writeAutomationScripts)).click();
-        actions.dragAndDrop(writeAutomationScripts, targetAuto1).perform();
+        actions.dragAndDrop(writeAutomationScripts, leftTargetAuto).perform();
         return this;
     }
 
     public DragAndDropPage dragFrameworkSetUp() {
         wait.until(ExpectedConditions.visibilityOf(frameworkSetUp)).click();
-        actions.dragAndDrop(frameworkSetUp, targetAuto2).perform();
+        actions.dragAndDrop(frameworkSetUp, rightTargetAuto).perform();
         return this;
     }
 

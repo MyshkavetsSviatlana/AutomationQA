@@ -1,41 +1,37 @@
-package hw17.course_selection;
+package hw19.allure;
 
-/*
-Automate the scenario shown in the video "Scenario for Automation Lecture 17 1.mp4" to practice
-working with the Select class.
-
-Data:
-➊ Country -> USA
-➋ Language -> English
-➌ Type -> Testing
-➍ Start date -> Should be the next Monday, based on today's date.
-➎ Last date -> Should be two weeks after the Start date.
-➏ select courses -> Choose AQA Java and AQA Python.
-
-Verify that the message "Unfortunately, we did not find any courses matching your chosen criteria." is displayed.
- */
-
+import hw17.course_selection.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import utils.Driver;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+import utils.DriverWithBrowserOptions;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
-public class CourseSelectionTest {
+import static hw19.allure.LoginAllureTest.takeScreenshot;
+
+public class CourseSelectionAllureTest {
     private static WebDriver driver;
     private static CourseSelectionPage courseSelectionPage;
     private static AccountPage accountPage;
     private static SearchResultPage searchResultPage;
     private static LoginPage loginPage;
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @BeforeClass
-    public void setUp() {
-        driver = Driver.setUpDriver();
+    @Parameters({"browser"})
+    public void varInit(String browser) {
+        driver = DriverWithBrowserOptions.setUpDriver(browser);
         loginPage = new LoginPage(driver);
         loginPage.openLoginPage()
                 .login(Credentials.REGISTERED_USER_LOGIN.getCredential(), Credentials.REGISTERED_USER_PASSWORD.getCredential());
@@ -47,7 +43,7 @@ public class CourseSelectionTest {
 
     @BeforeClass
     public String calculateStartDate() {
-        LocalDate dateNow = java.time.LocalDate.now();
+        LocalDate dateNow = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate nextMonday = dateNow.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
         return nextMonday.format(formatter);
@@ -55,15 +51,18 @@ public class CourseSelectionTest {
 
     @BeforeClass
     public String calculateEndDate() {
-        LocalDate dateNow = java.time.LocalDate.now();
+        LocalDate dateNow = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate nextMonday = dateNow.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
         LocalDate courseEnd = nextMonday.plusDays(14);
         return courseEnd.format(formatter);
     }
 
+    @Description("Course selection check")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("3.2")
     @Test
-    public void courseSelectionTest() throws InterruptedException {
+    public void courseSelectionTest() {
         courseSelectionPage.selectCountry("USA")
                 .selectLanguage("English")
                 .selectType("Testing")
@@ -72,8 +71,20 @@ public class CourseSelectionTest {
                 .selectCourse("AQA Java")
                 .selectCourse("AQA Python")
                 .submitForm();
-        driver = Driver.getDriver();
         searchResultPage = new SearchResultPage(driver);
+        LOGGER.info("Search result text: {}", searchResultPage.getSearchResult());
         Assert.assertEquals(searchResultPage.getSearchResult(), "Unfortunately, we did not find any courses matching your chosen criteria.");
+    }
+
+    @AfterMethod
+    public void makeScreenshotIfTestPass(ITestResult result) {
+        if (result.getStatus() == ITestResult.SUCCESS) {
+            takeScreenshot(driver, result.getMethod().getMethodName());
+        }
+    }
+
+    @AfterClass
+    public static void closeDriver() {
+        driver.quit();
     }
 }

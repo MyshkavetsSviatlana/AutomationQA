@@ -30,10 +30,10 @@ public class CourseSelectionPage {
     @FindBy(xpath = "//*[@title = \"Select type\"]")
     private static WebElement selectType;
 
-    @FindBy(xpath = "//input[@data-calendar= \"1\"]")
+    @FindBy(xpath = "//*[@title=\"Start date\"]")
     private static WebElement calendarFrom;
 
-    @FindBy(xpath = "//input[@data-calendar= \"2\"]")
+    @FindBy(xpath = "//*[@title=\"End date\"]")
     private static WebElement calendarTo;
 
     @FindBy(id = "MultipleSelect")
@@ -58,6 +58,7 @@ public class CourseSelectionPage {
     public CourseSelectionPage selectCountry(String value) {
         wait.until(ExpectedConditions.visibilityOf(selectCountry)).click();
         Select countrySelect = new Select(selectCountry);
+        System.out.println(countrySelect);
         int index = getIndex(countrySelect, value);
         countrySelect.selectByIndex(index);
         return this;
