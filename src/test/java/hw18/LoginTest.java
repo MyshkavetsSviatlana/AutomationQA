@@ -91,7 +91,7 @@ public class LoginTest {
     @Test(priority = 9)
     public static void passwordPlaceholderTest() {
         driver.navigate().refresh();
-        Assert.assertEquals(LoginPage.getPasswordField().getDomAttribute("placeholder"), "Enter password");
+        Assert.assertEquals(loginPage.getPasswordField().getDomAttribute("placeholder"), "Enter password");
     }
 
     @Test(priority = 10)
