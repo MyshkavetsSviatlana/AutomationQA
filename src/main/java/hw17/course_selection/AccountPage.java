@@ -26,7 +26,7 @@ public class AccountPage {
 
     public AccountPage(WebDriver driver) {
         AccountPage.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }

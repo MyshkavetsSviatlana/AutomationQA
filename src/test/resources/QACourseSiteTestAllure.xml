@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <test name="Chrome Tests">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="hw19.allure.RegistrationAllureTest"/>
+            <class name="hw19.allure.LoginAllureTest"/>
+            <class name="hw19.allure.LoginMultipleUsersAllureTest"/>
+            <class name="hw19.allure.ActionsAllureTest"/>
+            <class name="hw19.allure.DragAndDropAllureTest"/>
+            <class name="hw19.allure.CourseSelectionAllureTest"/>
+        </classes>
+    </test>
+</suite>
