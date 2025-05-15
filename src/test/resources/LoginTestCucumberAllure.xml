@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <test name="Chrome Tests">
+        <classes>
+            <class name="hw20.runner_allure.LoginTestAllureRunner"/>
+        </classes>
+    </test>
+</suite>
