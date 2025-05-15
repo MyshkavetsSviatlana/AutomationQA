@@ -36,7 +36,6 @@ public class TitleAllureSteps {
     }
 
     @Then("the page title is \"QA Course 01\"")
-    @Test(priority = 3)
     public void the_page_title_is_QA_Course_01() {
         Assert.assertEquals(driver.getTitle(), "QA Course 01");
     }
