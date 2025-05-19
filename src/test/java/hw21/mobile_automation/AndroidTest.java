@@ -24,13 +24,13 @@ public class AndroidTest {
     }
 
     @Test
-    public void checkNumberOfElements() {
+    public void numberOfElementsTest() {
         androidPage.clickOnView();
         Assert.assertEquals(androidPage.totalNumberOfClickableOnView(), 42);
     }
 
     @Test
-    public void changeDateAndTime() {
+    public void changeDateAndTimeTest() {
         androidPage.clickOnView();
         androidPage.clickOnDataWidgets();
         androidPage.clickOnDialog();
@@ -42,5 +42,13 @@ public class AndroidTest {
         androidPage.setPm();
         androidPage.clickOnOkButton();
         Assert.assertEquals(androidPage.getDateTime(), "5-20-2025 23:11");
+    }
+
+    @Test
+    public void clickNextTest() {
+        androidPage.clickOnView();
+        androidPage.clickOnTextSwitcher();
+        int clicks = androidPage.clickOnNext(3);
+        Assert.assertEquals(String.valueOf(clicks), androidPage.getNumberOfClicks());
     }
 }
